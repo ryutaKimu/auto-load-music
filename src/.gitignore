@@ -1,0 +1,10 @@
+# OSによる不要ファイル
+.DS_Store
+
+# Composerによる依存関係のキャッシュや依存ファイル
+/vendor/
+composer.lock
+
+
+# .envファイルなどの設定ファイル
+.env
