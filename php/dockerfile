@@ -1,0 +1,19 @@
+FROM php:8.3-fpm
+
+RUN docker-php-ext-install mysqli
+
+RUN apt-get update && apt-get install -y \
+    gnupg \
+    libzip-dev \
+    unzip \
+    zlib1g-dev \
+    cron \
+    vim \
+    && docker-php-ext-install \
+    pdo_mysql \
+    opcache \
+    zip
+
+WORKDIR /var/www/
+
+COPY --from=composer:2.2.5 /usr/bin/composer /usr/bin/composer
