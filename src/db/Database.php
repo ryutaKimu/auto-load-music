@@ -7,7 +7,6 @@ class Database
 
   public function __construct()
   {
-    // .env ファイルを読み込む
     try {
       $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
       $dotenv->load();
@@ -25,12 +24,11 @@ class Database
     $username = $_ENV['DB_USERNAME'];
     $password =  $_ENV['DB_PASSWORD'];
     try {
-      // PDOを使ってデータベースに接続
       $this->conn = new PDO("$con:host=$host;port=$port;dbname=$dbname", $username, $password);
-      return $this->conn; // 成功したら接続を返す
+      return $this->conn;
     } catch (PDOException $e) {
       echo "Connection failed: " . $e->getMessage();
-      return null; // 失敗した場合はnullを返す
+      return null;
     }
   }
 
