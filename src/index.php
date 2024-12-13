@@ -1,3 +1,9 @@
+<?php
+require_once "./db/ConnectDB.php";
+
+new Database();
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -19,6 +25,12 @@
       <option>日本</option>
       <option>アメリカ</option>
       <option>イギリス</option>
+    </select>
+    <p>下記より流すBGMを選択してください</p>
+    <select name="music" id="music">
+      <option>music1</option>
+      <option>music2</option>
+      <option>music3</option>
     </select>
   </main>
   <footer>
