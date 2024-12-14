@@ -1,3 +1,5 @@
+import { setTimezone } from "./updateClock.js";
+
 const timezone = document.getElementById("timezone");
 
 timezone.addEventListener("change", async function () {
@@ -11,8 +13,9 @@ timezone.addEventListener("change", async function () {
 
   if (response.ok) {
     const timezoneData = await response.json();
+    setTimezone(selectTimezone, timezoneData.converted_time);
     document.getElementById("currentTime").textContent =
-      timezoneData.current_time;
+      timezoneData.converted_time;
   } else {
     console.error("タイムゾーン変更に失敗しました");
   }
