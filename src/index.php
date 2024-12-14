@@ -1,17 +1,18 @@
 <?php
-require_once "./db/ConnectDB.php";
-
-new Database();
+require_once "lib/SelectTimezone.php";
+$selectTimezone = new SelectTimezone();
+$timezoneAll = $selectTimezone->selectTimezone();
 ?>
-
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Midnight Crescendo</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
   <header>
     <h1>Midnight Crescendo</h1>
@@ -22,9 +23,9 @@ new Database();
   <main>
     <p>下記よりタイムゾーンを選択してください</p>
     <select name="timezone" id="timezone">
-      <option>日本</option>
-      <option>アメリカ</option>
-      <option>イギリス</option>
+      <?php foreach ($timezoneAll as $timezone): ?>
+        <option><?php echo $timezone['description'] ?></option>
+      <?php endforeach; ?>
     </select>
     <p>下記より流すBGMを選択してください</p>
     <select name="music" id="music">
@@ -37,4 +38,5 @@ new Database();
     <p>&copy; 2024 Midnight Crescendo. All rights reserved.</p>
   </footer>
 </body>
+
 </html>
